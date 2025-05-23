@@ -2,6 +2,7 @@ package com.fiorillo.back_test.auth.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fiorillo.back_test.modules.user.model.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +12,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
+    @Getter
     private final Integer id;
     private final String username;
     @JsonIgnore

@@ -4,6 +4,7 @@ import com.fiorillo.back_test.modules.user.dto.UserDto;
 import com.fiorillo.back_test.modules.user.dto.UserResponse;
 import com.fiorillo.back_test.modules.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public void create(@RequestBody UserDto userDto) {
-        userService.create(userDto);
+    public ResponseEntity<?> create(@RequestBody UserDto userDto) {
+        return userService.create(userDto);
     }
 
     @GetMapping
