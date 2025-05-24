@@ -10,4 +10,6 @@ public interface UserRepository extends JpaRepository<User, Integer>,
     QuerydslPredicateExecutor<User> {
 
     Optional<User> findByUserName(String userName);
+
+    Optional<User> findByUserNameAndPassword(String userName, String password);
 }

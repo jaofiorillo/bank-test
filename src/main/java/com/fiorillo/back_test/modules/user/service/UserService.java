@@ -23,6 +23,8 @@ public class UserService {
 
     public ResponseEntity<?> create(UserDto dto) {
         try {
+            validateUserName(dto.userName());
+
             var user = User.of(dto);
             user.setPassword(passwordEncoder.encode(dto.password()));
             userRepository.save(user);
@@ -33,7 +35,15 @@ public class UserService {
         } catch (Exception ex) {
             return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(Map.of("message", "Erro ao criar usuário"));
+                .body(Map.of("message", ex.getMessage()));
+        }
+    }
+
+    public void validateUserName(String userName) {
+        var user = userRepository.findByUserName(userName);
+
+        if (user.isPresent()) {
+            throw new RuntimeException("Nome de usuário já existente");
         }
     }
 

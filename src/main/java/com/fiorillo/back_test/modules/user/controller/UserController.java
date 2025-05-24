@@ -7,17 +7,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/user")
 @RequiredArgsConstructor
+@RequestMapping("api/user")
 public class UserController {
 
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> create(@Valid @RequestBody UserDto userDto) {
         return userService.create(userDto);
     }
 

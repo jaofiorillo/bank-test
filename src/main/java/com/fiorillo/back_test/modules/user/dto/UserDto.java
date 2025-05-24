@@ -1,6 +1,6 @@
 package com.fiorillo.back_test.modules.user.dto;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
-public record UserDto(@NotEmpty String username, @NotEmpty String password) {
+public record UserDto(@NotBlank String userName, @NotBlank String password) {
 }
